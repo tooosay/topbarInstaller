@@ -63,7 +63,7 @@ function buildSuccade(){
 }
 
 function installFont(){
-	if [ -d "$HOME/.local/share/fonts" ]; then
+	if [ ! -d "$HOME/.local/share/fonts" ]; then
 	    mkdir "$HOME/.local/share/fonts"
 	fi
 	info "downloading font..."
