@@ -135,16 +135,16 @@ Battery() {
 	fi
 }
 
-Wifi(){
-	WIFISTR=$( iwconfig wlp1s0 | grep "Link" | sed 's/ //g' | sed 's/LinkQuality=//g' | sed 's/\/.*//g')
-	if [ ! -z $WIFISTR ] ; then
-		WIFISTR=$(( ${WIFISTR} * 100 / 70))
-		ESSID=$(iwconfig wlp1s0 | grep ESSID | sed 's/ //g' | sed 's/.*://' | cut -d "\"" -f 2)
-		if [ $WIFISTR -ge 1 ] ; then
-			echo -e "\uf1eb ${ESSID} ${WIFISTR}%"
-		fi
-	fi
-}
+# Wifi(){
+# 	WIFISTR=$( iwconfig wlp1s0 | grep "Link" | sed 's/ //g' | sed 's/LinkQuality=//g' | sed 's/\/.*//g')
+# 	if [ ! -z $WIFISTR ] ; then
+# 		WIFISTR=$(( ${WIFISTR} * 100 / 70))
+# 		ESSID=$(iwconfig wlp1s0 | grep ESSID | sed 's/ //g' | sed 's/.*://' | cut -d "\"" -f 2)
+# 		if [ $WIFISTR -ge 1 ] ; then
+# 			echo -e "\uf1eb ${ESSID} ${WIFISTR}%"
+# 		fi
+# 	fi
+# }
 
 Sound(){
 	NOTMUTED=$( amixer sget Master | grep "\[on\]" )
