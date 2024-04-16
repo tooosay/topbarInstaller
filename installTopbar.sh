@@ -6,14 +6,14 @@ GREEN="\e[32m"
 ORANGE="\e[33m"
 ENDCOLOR="\e[0m"
 ## log functions ##
-function info(msg){
-	echo -e "[${ORANGE}INFO${ENDCOLOR}] ${ORANGE}${msg}${ENDCOLOR}"
+function info(){
+	echo -e "[${ORANGE}INFO${ENDCOLOR}] ${ORANGE}$1${ENDCOLOR}"
 }
-function err(msg){
-	echo -e "[${RED}ERROR${ENDCOLOR}] ${RED}${msg}${ENDCOLOR}"
+function err(){
+	echo -e "[${RED}ERROR${ENDCOLOR}] ${RED}$1${ENDCOLOR}"
 }
-function ok(msg){
-	echo -e "[${GREEN}OK${ENDCOLOR}] ${GREEN}${msg}${ENDCOLOR}"
+function ok(){
+	echo -e "[${GREEN}OK${ENDCOLOR}] ${GREEN}$1${ENDCOLOR}"
 }
 ###################
 
@@ -29,59 +29,59 @@ function buildWorkspace(){
 	cd $Workspacename
 }
 function clean(){
-	info("cleaning up....")
+	info "cleaning up...."
 	if [ ! -d $Workspacename ]; then
                 cd ..
 		clean
     fi
 
 	rm -rf $Workspacename
-	ok("done")
+	ok "done" 
 }
 
 function buildbins(){
-	info("building executables...")
+	info "building executables..."
 	buildBar
 	buildSuccade
 }
 function buildBar(){
-	info("building top bar....")
+	info "building top bar...."
 	git clone --depth 1 https://gitlab.com/protesilaos/lemonbar-xft.git xft
 	cd xft
-	make target PREFIX=~/.local && make install
+	make target PREFIX="$HOME/.local" && make install
 	cd ..
-	ok("done")
+	ok "done"
 }
 function buildSuccade(){
-	info("building helper....")
+	info "building helper...."
 	git clone --depth 1 https://github.com/domsson/succade.git sca
 	cd sca
 	./build-inih 
 	./install 
 	cd ..
-	ok("done")
+	ok "done"
 }
 
 function installFont(){
-	if [ -d "~/.local/share/fonts" ]; then
-	    mkdir ~/.local/share/fonts
+	if [ -d "$HOME/.local/share/fonts" ]; then
+	    mkdir "$HOME/.local/share/fonts"
 	fi
-	info("downloading font...")
+	info "downloading font..."
 	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/InconsolataLGC.zip
-	info("extracting font...")
-	unzip InconsolataLGC.zip -d ~/.local/share/fonts/InconsolataLGC
-	info("instlling font...")
+	info "extracting font..."
+	unzip InconsolataLGC.zip -d $HOME/.local/share/fonts/InconsolataLGC
+	info "instlling font..."
 	fc-cache -fv
 }
 
 function configureLemonade(){
-	info("configuring Lemonade ...")
+	info "configuring Lemonade ..."
 	if [ ! -f $lemonadeFile ]; then
-	    info("no config file so creating file")
+	    info "no config file so creating file"
 		touch $lemonadeFile
-		ok("file created")
+		ok "file created" 
 	fi
-		info("overwriting config file ...")
+		info "overwriting config file ..."
         cat > $lemonadeFile << EOL
 #!/usr/bin/bash
 
@@ -194,39 +194,39 @@ fi
 # Call the specified function
 "$@"
 
-EOL	
-ok("lemonade configured")
+EOL
+ok "lemonade configured"
 }
 
 function configureStartup(){
-	info("configuring startup")
+	info "configuring startup"
 	if [ ! -f $customBashFile ]; then
-	    info("${customBashFile} not found so creating....")
+	    info "${customBashFile} not found so creating...."
 		touch $customBashFile
-		ok("file created")
+		ok "file created"
 	fi
-	info("checking previous configuration..")
-	if [ grep -q "if \[ \$(pgrep succade | wc -l ) -lt \"1\" \]; then" $customBashFile ]; then
-	info("configuring starup...")
+	info "checking previous configuration.."
+	if [ $(grep -q "if \[ \$(pgrep succade | wc -l ) -lt \"1\" \]; then" $customBashFile) ]; then
+	info "configuring starup..."
 	cat >> $customBashFile << EOL
 	if [ $(pgrep succade | wc -l ) -lt "1" ]; then
 	 succade &
     fi
 EOL
 else
-     ok("startup is already configured")
+     ok "startup is already configured"
 fi
-     ok("successfully configured startup")
+     ok "successfully configured startup"
 }
 
 function configureSuccade(){
-	info("configuring succade")
+	info "configuring succade"
 	if [ ! -f $sucFile ]; then
-	   info("no conifg file found so creating....")
+	   info "no conifg file found so creating...."
 	   mkdir $sucConfigDir
 		touch $sucFile
 	fi
-	info("overwriting config file ... ")
+	info "overwriting config file ... "
 	cat > $sucFile << EOL
 [bar]
 name = "toppbar"
@@ -278,11 +278,11 @@ mouse-right = "pavucontrol"
 scroll-up = "amixer -D default sset Master 5%+"
 scroll-down = "amixer -D default sset Master 5%-"
 EOL	
-ok("succade configured")
+ok "succade configured"
 }
 
 function main(){
-	info("starting installation...")
+	info "starting installation..."
 	buildWorksapce
 	### write instruction here
 	installFont
@@ -291,10 +291,10 @@ function main(){
 	configureSuccade
 	configureStartup
 	###
-	ok("successfully configured...")
-	info("wait for a moment to cleanup the workspace...")
+	ok "successfully configured..."
+	info "wait for a moment to cleanup the workspace..."
 	clean
-	ok("sucess... please reboot your machine :<>")
+	ok "sucess... please reboot your machine :<>"
 }
 
 main
