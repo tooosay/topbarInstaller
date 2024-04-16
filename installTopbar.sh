@@ -283,7 +283,7 @@ ok "succade configured"
 
 function main(){
 	info "starting installation..."
-	buildWorksapce
+	buildWorkspace
 	### write instruction here
 	installFont
 	buildbins
