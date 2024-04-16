@@ -277,7 +277,7 @@ mouse-left = "amixer -D default set Master toggle"
 mouse-right = "pavucontrol"
 scroll-up = "amixer -D default sset Master 5%+"
 scroll-down = "amixer -D default sset Master 5%-"
-EOL	
+EOL
 ok "succade configured"
 }
 
