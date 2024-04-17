@@ -48,7 +48,8 @@ function buildBar(){
 	info "building top bar...."
 	git clone --depth 1 https://gitlab.com/protesilaos/lemonbar-xft.git xft
 	cd xft
-	make target PREFIX="$HOME/.local" && make install
+	sed -i "s@PREFIX?=/usr@PREFIX?=$HOME/.local/g" Makefile 
+	make && make install
 	cd ..
 	ok "done"
 }
