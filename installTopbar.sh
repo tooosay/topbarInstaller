@@ -197,7 +197,9 @@ fi
 "$@"
 
 EOL
+chmod +x $lemonadeFile
 ok "lemonade configured"
+
 }
 
 function configureStartup(){
