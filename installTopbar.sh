@@ -211,9 +211,9 @@ function configureStartup(){
 	else
 		info "configuring starup..."
 		cat >> $customBashFile << EOL
-		if [ $(pgrep succade | wc -l ) -lt "1" ]; then
-	 		succade &
-    	fi
+if [ \$(pgrep succade | wc -l ) -lt "1" ]; then
+	succade &
+fi
 EOL
 fi
      ok "successfully configured startup"
