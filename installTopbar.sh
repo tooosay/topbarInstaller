@@ -82,7 +82,7 @@ function configureLemonade(){
 		ok "file created" 
 	fi
 		info "overwriting config file ..."
-        cat > $lemonadeFile << EOL
+        cat > $lemonadeFile << 'EOL'
 #!/usr/bin/bash
 
 Clock(){
