@@ -92,6 +92,7 @@ function configureLemonade(){
 
 function configureStartup(){
 	info "configuring startup"
+	local customBashFile="${HOME}/.bashrc.custom"
 	if [ ! -f $customBashFile ]; then
 	    info "${customBashFile} not found so creating...."
 		touch $customBashFile
