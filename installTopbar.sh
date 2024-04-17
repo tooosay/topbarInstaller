@@ -262,18 +262,18 @@ mouse-middle = "slack"
 margin-right = 8
 
 [battery]
-command = "lemonbar.sh Battery"
+command = "lemonade.sh Battery"
 interval = 3
 ; label = "  "
 ; label-background = "#ef9f76"
 margin-right = 8
 
 [spotify]
-command = 'lemonbar.sh Spotify'
+command = 'lemonade.sh Spotify'
 mouse-left = "xdg-open https://spotify.com"
 
 [sound]
-command = "lemonbar.sh Sound"
+command = "lemonade.sh Sound"
 interval = 0.1
 mouse-left = "amixer -D default set Master toggle"
 mouse-right = "pavucontrol"
