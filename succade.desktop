@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=GNOME;Utility;
+Comment=Succade
+Exec=${HOME}/.local/bin/succade
+Icon=
+Name=Succade
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
