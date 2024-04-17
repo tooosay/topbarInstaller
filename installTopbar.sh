@@ -207,14 +207,14 @@ function configureStartup(){
 	fi
 	info "checking previous configuration.."
 	if grep -q "if \[ \$(pgrep succade | wc -l ) -lt \"1\" \]; then" $customBashFile > /dev/null ; then
-	info "configuring starup..."
-	cat >> $customBashFile << EOL
-	if [ $(pgrep succade | wc -l ) -lt "1" ]; then
-	 succade &
-    fi
+	    ok "startup is already configured"
+	else
+		info "configuring starup..."
+		cat >> $customBashFile << EOL
+		if [ $(pgrep succade | wc -l ) -lt "1" ]; then
+	 		succade &
+    	fi
 EOL
-else
-     ok "startup is already configured"
 fi
      ok "successfully configured startup"
 }
