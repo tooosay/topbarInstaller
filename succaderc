@@ -1,0 +1,49 @@
+[bar]
+name = "toppbar"
+blocks = " | time | sound battery"
+height = 24
+underline = true
+font = "Inconsolata LGC Nerd Font Mono"
+label-font = "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+
+[default]
+margin = 4
+padding = 2
+foreground = "#c6d0f5"
+; background = "#303446"
+; label-foreground = "#838ba7"
+
+[date]
+command = "date +'%Y-%m-%d'"
+interval = 1
+; label = "  "
+; label-background = "#a6d189"
+
+[time]
+command = "date +'%Y-%m-%d  %H:%M:%S'"
+interval = 1
+; label = "  "
+; label-background = "#ca9ee6"
+mouse-left = "xdg-open https://calendar.google.com"
+mouse-right = "xdg-open https://liferay.atlassian.net/jira/your-work"
+mouse-middle = "slack"
+margin-right = 8
+
+[battery]
+command = "${HOME}/.config/succade/lemonade.sh Battery"
+interval = 3
+; label = "  "
+; label-background = "#ef9f76"
+margin-right = 8
+
+[spotify]
+command = "${HOME}/.config/succade/lemonade.sh Spotify"
+mouse-left = "xdg-open https://spotify.com"
+
+[sound]
+command = "${HOME}/.config/succade/lemonade.sh Sound"
+interval = 0.1
+mouse-left = "amixer -D default set Master toggle"
+mouse-right = "pavucontrol"
+scroll-up = "amixer -D default sset Master 5%+"
+scroll-down = "amixer -D default sset Master 5%-"
