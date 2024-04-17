@@ -95,10 +95,6 @@ Clock(){
 Cal() {
     DATE=$(date "+%a, %m %B %Y")
     echo -e -n "\uf073 ${DATE}"
-ndowname | cut -c 1-$max_len)..."
-	else
-		echo -n "$(xdotool getwindowfocus getwindowname)"
-	fi
 }
 
 Battery() {
