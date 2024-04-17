@@ -83,6 +83,9 @@ function downloadHelperFile(){
 
 function configureLemonade(){
 	info "configuring lemonade ..."
+	if [ ! -d "${HOME}/.config/succade" ]; then
+		mkdir -p "${HOME}/.config/succade"
+	fi
 	downloadHelperFile lemonade.sh ${HOME}/.config/succade/
 	ok "lemonade configured"
 }
