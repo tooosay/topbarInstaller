@@ -4,4 +4,6 @@
  use this at your own risk
  
 
- `curl -sSf -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/tooosay/topbarInstaller/master/installTopbar.sh | sh`
+ ```sh
+ curl -sSf -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/tooosay/topbarInstaller/master/installTopbar.sh | sh
+ ```
