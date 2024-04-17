@@ -18,9 +18,9 @@ function ok(){
 ###################
 
 Workspacename="topbarInstallWorkspaceAndThisShouldBeRemovedAfterInstallation"
-lemonadeFile="/home/$USER/.local/bin/lemonade.sh"
-customBashFile="/home/$USER/.bashrc.custom"
-sucConfigDir="/home/$USER/.config/succade"
+lemonadeFile="$HOME/.local/bin/lemonade.sh"
+customBashFile="$HOME/.bashrc.custom"
+sucConfigDir="$HOME/.config/succade"
 sucFile="$sucConfigDir/succaderc"
 function buildWorkspace(){
 	if [ ! -d $Workspacename ]; then
@@ -206,7 +206,7 @@ function configureStartup(){
 		ok "file created"
 	fi
 	info "checking previous configuration.."
-	if [ $(grep -q "if \[ \$(pgrep succade | wc -l ) -lt \"1\" \]; then" $customBashFile) ]; then
+	if grep -q "if \[ \$(pgrep succade | wc -l ) -lt \"1\" \]; then" $customBashFile ; then
 	info "configuring starup..."
 	cat >> $customBashFile << EOL
 	if [ $(pgrep succade | wc -l ) -lt "1" ]; then
