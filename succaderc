@@ -5,6 +5,7 @@ height = 24
 underline = true
 font = "Inconsolata LGC Nerd Font Mono"
 label-font = "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+; bottom = true
 
 [default]
 margin = 4
